@@ -74,7 +74,7 @@ abstract class AbstractValidateRenderer extends AbstractRenderer
 
         foreach ($formOrFieldset->getFieldsets() as $key => $fieldset) {
             if ($inputFilter->has($key)) {
-                $foundValidators = array_merge($foundValidators, $this->extractValidatorsForForm($fieldset, $inputFilter->get($key)));
+                $foundValidators = array_merge($foundValidators, $this->extractValidatorsForForm($fieldset, $inputFilter->get($key), $fieldset->getName()));
             }
         }
 
