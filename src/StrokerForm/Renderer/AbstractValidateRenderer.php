@@ -45,7 +45,7 @@ abstract class AbstractValidateRenderer extends AbstractRenderer
             $element = $validator['element'];
             foreach ($validator['validators'] as $val) {
                 $this->addValidationAttributesForElement($formAlias, $element, $val['instance']);
-            };
+            }
         }
     }
 
