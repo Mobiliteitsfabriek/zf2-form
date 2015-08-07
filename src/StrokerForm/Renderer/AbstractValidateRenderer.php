@@ -56,10 +56,13 @@ abstract class AbstractValidateRenderer extends AbstractRenderer
      * @param InputFilterInterface $inputFilter
      * @return array
      */
-    public function extractValidatorsForForm(FieldsetInterface $formOrFieldset, InputFilterInterface $inputFilter)
+    public function extractValidatorsForForm(FieldsetInterface $formOrFieldset, InputFilterInterface $inputFilter, $fieldsetName = null)
     {
         $foundValidators = array();
         foreach ($formOrFieldset->getElements() as $element) {
+            if (!is_null($fieldsetName)) {
+                $element->setName($fieldsetName . '[' . $element->getName() . ']');
+            }
             $validators = $this->getValidatorsForElement($inputFilter, $element);
             if (count($validators) > 0) {
                 $foundValidators[] = array(
